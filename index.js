@@ -70,6 +70,10 @@ app.get("/helpUs", (req, res) => {
   res.render("helpUs.ejs",{nameto: req.user.name,symps: featureNames});
 });
 
+app.get('/hostEvent', (req, res) => {
+  res.render("hostEvent.ejs"); // Render the hostEvent.ejs template
+});
+
 app.get("/login", (req, res) => {
   if(timepass != -1){
     res.render("login.ejs",{alter: "Registered Successfully Please Login"});
@@ -140,7 +144,18 @@ app.get("/thanks", (req, res) => {
 app.get("/piechart", (req, res) => {
   if(haschart != -1){
     console.log(dataAboutChart);
-    res.render("piechart.ejs",{data: dataAboutChart,nameto: req.user.name});
+    let mx = 0;
+    const data=Object.keys(dataAboutChart);
+    for(let i=0; i<data.length; i++){
+      if(mx < dataAboutChart[data[i]])
+      {
+        mx=dataAboutChart[data[i]];
+      }
+      // console.log(dataAboutChart[data[i]]);
+    
+    }
+    // console.log(mx);
+    res.render("piechart.ejs",{data: dataAboutChart,nameto: req.user.name,max:mx});
   }
   else{
     res.send("error occured");

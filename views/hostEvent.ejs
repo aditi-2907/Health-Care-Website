@@ -1,0 +1,70 @@
+<%- include('partials/header') %>
+<div class="nav">
+    <div class="heading">
+        <div class="clgLogo">
+            <img src="MANIT_LOGO.png">
+        </div>
+        Health_Sympto_Care
+    </div>
+    <div class="routes">
+        <ul class="navlinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">About</a></li>
+            <li><a href="/">Services</a></li>
+            <li><a href="/">Contact</a></li>
+        </ul>
+    </div>
+    <div class="text-container">
+        <div class="moving-text">Provide your symptoms, and receive the quickest prediction about your health. <span>&nbsp;&nbsp;||&nbsp;&nbsp;||&nbsp;&nbsp;</span> Assist us in training our model. <span>&nbsp;&nbsp;||&nbsp;&nbsp;||&nbsp;&nbsp;</span> Help Us </div>
+    </div>
+   <% if (locals.nameto) { %>
+    <div class="name">
+        <%= nameto %>
+        <a href="/logout">LogOut</a>
+    </div>
+    <% } else { %>
+    <div class="name">
+        please login
+    </div>
+    <% } %>
+</div>
+
+    <h1 class="oneunique">Host Event Page</h1>
+    <button id="open-camera">Open Camera</button>
+    <button id="start-stream">Start Live Stream</button>
+
+    <div id="camera-container">
+        <!-- Initially display a black screen -->
+        <video id="camera" style="display: none;"></video>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openCameraButton = document.getElementById('open-camera');
+            const startStreamButton = document.getElementById('start-stream');
+            let videoElement;
+
+            openCameraButton.addEventListener('click', async () => {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    if (!videoElement) {
+                        // Create video element if it doesn't exist
+                        videoElement = document.createElement('video');
+                        videoElement.autoplay = true;
+                        document.getElementById('camera-container').appendChild(videoElement);
+                    }
+                    videoElement.srcObject = stream;
+                    videoElement.style.display = 'block'; // Show the video element
+                } catch (error) {
+                    console.error('Error accessing camera:', error);
+                }
+            });
+
+            startStreamButton.addEventListener('click', () => {
+                // Add logic to start the live stream
+                console.log('Starting live stream...');
+            });
+        });
+    </script>
+<%- include('partials/footer') %>

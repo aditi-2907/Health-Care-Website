@@ -791,3 +791,39 @@ body {
         transform: translateX(-80vw); /* Adjust the value to move text across the screen */
     }
 }
+#camera-container{
+    border: 2px solid red;
+    position: absolute;
+    top: 30vh;
+    left: 20vw;
+    height: 50vh;
+    width: 60vw;
+    background-color: #000000;
+}
+#camera-container video{
+    width: 100%;
+    height: 100%;
+    /* border: 3px solid red; */
+}
+.oneunique{
+    position: absolute;
+    top: 80vh;
+    left: 20vw;
+}
+#open-camera{
+    position: absolute;
+    top: 90vh;
+    left: 20vw;
+}
+#start-stream{
+    position: absolute;
+    top: 90vh;
+    left: 50vw;
+}
+.cautionNoti{
+    position: absolute;
+    top: 90vh;
+    left:33vw;
+    color: red;
+    font-weight: bold;
+}

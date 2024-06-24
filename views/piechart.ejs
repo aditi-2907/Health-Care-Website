@@ -18,6 +18,11 @@
         <div class="text-container">
             <div class="moving-text">Provide your symptoms, and receive the quickest prediction about your health. <span>&nbsp;&nbsp;||&nbsp;&nbsp;||&nbsp;&nbsp;</span> Assist us in training our model. <span>&nbsp;&nbsp;||&nbsp;&nbsp;||&nbsp;&nbsp;</span> Help Us </div>
         </div>
+        <% if (max < 70) { %>
+            <div class="cautionNoti">
+                Caution: Percentage less than 70 , it may or may not be accurate
+            </div>
+        <% } %>
        <% if (locals.nameto) { %>
         <div class="name">
             <%= nameto %>
